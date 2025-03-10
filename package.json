@@ -4,7 +4,10 @@
   "description": "Native promise extensions for javascript and typescript.",
   "main": "dist/index.js",
   "exports":{
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./clean": "./dist/clean.js",
+    "./then": "./dist/then/index.js",
+    "./log": "./dist/then/log.js"
   },
   "scripts": {
     "start": "node .",
