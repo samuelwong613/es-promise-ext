@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+
+# Soruce Code
+src/
+
+# Test
+test/
+
+# Config
+.npmignore
+.gitignore
+package-lock.json
+tsconfig.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Others
+coverage/
+*.tgz
