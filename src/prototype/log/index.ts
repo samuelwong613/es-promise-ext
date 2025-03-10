@@ -1,4 +1,4 @@
-import { extendPrototype } from '../_helper';
+import { extendPrototype } from '../../_helper';
 import _log, {Logger} from './log';
 
 declare global {
@@ -16,7 +16,7 @@ declare global {
      *   .then(doSomething)      
      * // return 3 in a promise, after logging
      */
-    log<T>(): Promise<T>;
+    log(): Promise<T>;
 
     /**
      * Logging the value between the promise chain.
@@ -33,7 +33,7 @@ declare global {
      *   .then(doSomething)      
      * // return true in a promise, after logging
      */
-     log<T>(logger?: Logger): Promise<T>;
+     log(logger?: Logger): Promise<T>;
 
      /**
      * Logging the value between the promise chain.
@@ -41,8 +41,8 @@ declare global {
      * @param {Function} [logger=console.log]
      * - a logger; default would be console.log
      * 
-     * @param {*}
-     * - additional description
+     * @param {...any[]} args[]
+     * - additional arguments for logger
      * 
      * @return {Promise<T>} 
      * A value which pass through within a promise
@@ -53,11 +53,11 @@ declare global {
      *   .then(doSomething)      
      * // return 'a' in a promise, after logging
      */
-    log<T>(logger?: Logger, ...args: any): Promise<T>;
+    log(logger?: Logger, ...args: any[]): Promise<T>;
   }
 }
 
-function log<T>(this: Promise<T>, logger: Logger = console.log, ...args: any): Promise<T>{
+function log<T>(this: Promise<T>, logger: Logger = console.log, ...args: any[]): Promise<T>{
 
   if (!(this instanceof Promise))
     throw TypeError('Promise.prototype.log called on a non-Promise instance');

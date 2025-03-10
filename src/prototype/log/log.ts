@@ -39,7 +39,7 @@ export default function log<T>(logger: Logger): LoggingFunction<T>;
  * - a logger; default would be console.log
  * 
  * @param {*}
- * - additional description
+ * - additional arguments for logger
  * 
  * @return {Function<T>} 
  * A value which pass through within a promise
@@ -50,10 +50,10 @@ export default function log<T>(logger: Logger): LoggingFunction<T>;
  *   .then(doSomething)      
  * // return 'a' in a promise, after logging
  */
-export default function log<T>(logger: Logger, ...args: any): LoggingFunction<T>;
+export default function log<T>(logger: Logger, ...args: any[]): LoggingFunction<T>;
 
 
-export default function log<T>(logger: Logger = console.log, ...args: any): LoggingFunction<T> {
+export default function log<T>(logger: Logger = console.log, ...args: any[]): LoggingFunction<T> {
   return (value) => {
     logger(...args, value);
     return value;
