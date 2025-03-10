@@ -10,8 +10,8 @@ declare global {
      * Start promise with a function, which Promise.resolve() not supported.
      * 
      * @param {T} value
-     * - a value: equivient to Promise.resolve(value)
-     * - a function, which will be called and pass the value
+     * - a value - which would be equivient to Promise.resolve(value)
+     * - a function which will be called and pass the result in promise
      * 
      * @return {Promise<T>} 
      * A value within a promise
@@ -20,7 +20,7 @@ declare global {
      * Promise.then(3)      // return 3 in a promise
      * Promise.then(()=>3)  // return 3 in a promise
      */
-    then<T>(value: T | func<T>): Promise<T>;
+    then<T>(value: T | PromiseLike<T> | func<T>): Promise<T>;
   }
 }
 
