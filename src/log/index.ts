@@ -12,8 +12,8 @@ declare global {
      * 
      * @example
      * Promise.resolve(3)
-     *  .log()
-     *  .then(doSomething)      
+     *   .log()
+     *   .then(doSomething)      
      * // return 3 in a promise, after logging
      */
     log<T>(): Promise<T>;
@@ -29,8 +29,8 @@ declare global {
      * 
      * @example
      * Promise.resolve(true)
-     *  .log(console.warn)
-     *  .then(doSomething)      
+     *   .log(console.warn)
+     *   .then(doSomething)      
      * // return true in a promise, after logging
      */
      log<T>(logger?: Logger): Promise<T>;
@@ -49,8 +49,8 @@ declare global {
      * 
      * @example
      * Promise.resolve('a')
-     *  .log(console.log, "my value:")
-     *  .then(doSomething)      
+     *   .log(console.log, "my value:")
+     *   .then(doSomething)      
      * // return 'a' in a promise, after logging
      */
     log<T>(logger?: Logger, ...args: any): Promise<T>;
