@@ -1,4 +1,4 @@
-type func<T> = () => T;
+export type func<T> = () => T;
 
 /**
  * Start promise with a function, which Promise.resolve() not supported.

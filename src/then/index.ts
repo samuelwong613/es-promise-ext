@@ -1,7 +1,5 @@
 import {extendProperty} from '../_helper';
-import then from './then';
-
-type func<T> = (...args : any[]) => T;
+import then, {func} from './then';
 
 declare global {
   interface PromiseConstructor {
