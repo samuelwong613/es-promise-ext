@@ -7,7 +7,9 @@
     ".": "./dist/index.js",
     "./clean": "./dist/clean.js",
     "./then": "./dist/then/index.js",
-    "./log": "./dist/then/log.js"
+    "./delay": "./dist/delay/index.js",
+    "./prototype/log": "./dist/prototype/log/index.js",
+    "./prototype/delay": "./dist/prototype/delay/index.js"
   },
   "scripts": {
     "start": "node .",
