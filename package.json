@@ -1,0 +1,44 @@
+{
+  "name": "es-promise-ext",
+  "version": "0.0.1",
+  "description": "Native promise extensions for javascript and typescript.",
+  "main": "dist/index.js",
+  "exports":{
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "start": "node .",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "promise",
+    "delay",
+    "log",
+    "timeout",
+    "retry",
+    "sequence",
+    "reduce",
+    "wrapCallback",
+    "prototype",
+    "ext",
+    "extension",
+    "extensions",
+    "js",
+    "javascript",
+    "ts",
+    "typescript",
+    "es",
+    "ECMAscript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samuelwong613/es-promise-ext.git"
+  },
+  "author": "samuelwong <samuelwong613@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "typescript": "^5.8.2"
+  }
+}

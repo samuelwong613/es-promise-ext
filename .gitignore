@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+
+# TypeScript compiled files
+*.js
+*.js.map
+*.d.ts
+
+# Test
+!*.test.js
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Others
+coverage/
+*.tgz
