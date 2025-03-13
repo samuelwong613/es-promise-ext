@@ -61,6 +61,9 @@ function log<T>(this: Promise<T>, logger: Logger = console.log, ...args: any[]):
 
   if (!(this instanceof Promise))
     throw TypeError('Promise.prototype.log called on a non-Promise instance');
+
+  if (typeof logger !== 'function')
+    throw TypeError('Promise.prototype.log parameter 1 must be a function');
   
   return (this).then((value:T) => {
     logger(...args, value);

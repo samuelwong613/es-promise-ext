@@ -54,6 +54,9 @@ export default function log<T>(logger: Logger, ...args: any[]): LoggingFunction<
 
 
 export default function log<T>(logger: Logger = console.log, ...args: any[]): LoggingFunction<T> {
+  if (typeof logger !== 'function')
+    throw TypeError('log parameter 1 must be a function');
+
   return (value) => {
     logger(...args, value);
     return value;
