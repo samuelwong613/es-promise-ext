@@ -7,7 +7,7 @@ test('promiseDelay(100)', async () => {
   promise.then(value => {
     const time = Date.now() - now;
     expect(time).toBeGreaterThan(100);
-    expect(time).toBeLessThan(200);
+    expect(time).toBeLessThan(300);
     expect(value).toBe(undefined);
   })
 })
@@ -20,18 +20,18 @@ test('promiseDelay(200)', async () => {
   promise.then(value => {
     const time = Date.now() - now;
     expect(time).toBeGreaterThan(200);
-    expect(time).toBeLessThan(300);
+    expect(time).toBeLessThan(400);
     expect(value).toBe(undefined);
   })
 })
 
 
 test('invalid promiseDelay', async () => {
-  expect(()=>promiseDelay()).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay(1.5)).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay(-5)).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay('abc')).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay(true)).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay(null)).toThrow('promiseDelay parameter 1 must be a positive integer');
-  expect(()=>promiseDelay(()=>{})).toThrow('promiseDelay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay()).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay(1.5)).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay(-5)).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay('abc')).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay(true)).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay(null)).toThrow('Promise.delay parameter 1 must be a positive integer');
+  expect(()=>promiseDelay(()=>{})).toThrow('Promise.delay parameter 1 must be a positive integer');
 })

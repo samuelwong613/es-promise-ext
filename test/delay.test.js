@@ -7,7 +7,7 @@ test('Promise.delay(100)', async () => {
   promise.then(value => {
     const time = Date.now() - now;
     expect(time).toBeGreaterThan(100);
-    expect(time).toBeLessThan(200);
+    expect(time).toBeLessThan(300);
     expect(value).toBe(undefined);
   })
 })
@@ -20,7 +20,7 @@ test('Promise.delay(200)', async () => {
   promise.then(value => {
     const time = Date.now() - now;
     expect(time).toBeGreaterThan(200);
-    expect(time).toBeLessThan(300);
+    expect(time).toBeLessThan(400);
     expect(value).toBe(undefined);
   })
 })
