@@ -22,4 +22,4 @@ declare global {
 
 }
 
-extendProperty(delay);
+extendProperty(delay,{functionName: 'delay'});
