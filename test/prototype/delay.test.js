@@ -1,3 +1,6 @@
+jest.useFakeTimers();
+jest.spyOn(global, 'setTimeout');
+
 require('../../dist/prototype/delay/index');
 
 test('Promise.resolve("a").delay(100)', async () => {
@@ -7,8 +10,10 @@ test('Promise.resolve("a").delay(100)', async () => {
     .then(value => {
       const time = Date.now() - now;
       expect(time).toBeGreaterThanOrEqual(100);
+      expect(time).toBeLessThan(150);
       expect(value).toBe('a');
     })
+  jest.runOnlyPendingTimers();  
 })
 
 
@@ -20,8 +25,10 @@ test('Promise.resolve(object).delay(200)', async () => {
     .then(value => {
       const time = Date.now() - now;
       expect(time).toBeGreaterThanOrEqual(200);
+      expect(time).toBeLessThan(350);
       expect(value).toBe(object);
     })
+  jest.runOnlyPendingTimers();    
 })
 
 
@@ -32,8 +39,10 @@ test('Promise.resolve(true).delay(100)', async () => {
     .then(value => {
       const time = Date.now() - now;
       expect(time).toBeGreaterThanOrEqual(100);
+      expect(time).toBeLessThan(150);
       expect(value).toBe(true);
     })
+  jest.runOnlyPendingTimers();    
 })
 
 

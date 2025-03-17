@@ -1,14 +1,18 @@
+jest.useFakeTimers();
+jest.spyOn(global, 'setTimeout');
+
 const {promiseDelay} = require('../dist/clean');
 
 test('promiseDelay(100)', async () => {
   const now = Date.now();
   const promise = promiseDelay(100);
   expect(promise instanceof Promise).toBe(true);
-  promise.then(value => {
-    const time = Date.now() - now;
-    expect(time).toBeGreaterThanOrEqual(100);
-    expect(value).toBe(undefined);
-  })
+  jest.runOnlyPendingTimers();
+  const value = await promise;
+  const time = Date.now() - now;
+  expect(time).toBeGreaterThanOrEqual(100);
+  expect(time).toBeLessThan(150);
+  expect(value).toBe(undefined);  
 })
 
 
@@ -16,11 +20,12 @@ test('promiseDelay(200)', async () => {
   const now = Date.now();
   const promise = promiseDelay(200);
   expect(promise instanceof Promise).toBe(true);
-  promise.then(value => {
-    const time = Date.now() - now;
-    expect(time).toBeGreaterThanOrEqual(200);
-    expect(value).toBe(undefined);
-  })
+  jest.runOnlyPendingTimers();
+  const value = await promise;
+  const time = Date.now() - now;
+  expect(time).toBeGreaterThanOrEqual(200);
+  expect(time).toBeLessThan(250);
+  expect(value).toBe(undefined);  
 })
 
 
