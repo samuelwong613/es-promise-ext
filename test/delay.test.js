@@ -1,4 +1,4 @@
-require('../dist/delay/index');
+require('../dist/delay');
 
 test('Promise.delay(100)', async () => {
   const now = Date.now();
