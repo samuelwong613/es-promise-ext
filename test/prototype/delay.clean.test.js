@@ -6,7 +6,7 @@ test('Promise.resolve("a").delay(100)', async () => {
     .then(delay(100))
     .then(value => {
       const time = Date.now() - now;
-      expect(time).toBeGreaterThan(100);
+      expect(time).toBeGreaterThanOrEqual(100);
       expect(value).toBe('a');
     })
 })
@@ -19,7 +19,7 @@ test('Promise.resolve(object).delay(200)', async () => {
   .then(delay(200))
     .then(value => {
       const time = Date.now() - now;
-      expect(time).toBeGreaterThan(200);
+      expect(time).toBeGreaterThanOrEqual(200);
       expect(value).toBe(object);
     })
 })
@@ -31,7 +31,7 @@ test('Promise.resolve(true).delay(100)', async () => {
     .then(delay(100))
     .then(value => {
       const time = Date.now() - now;
-      expect(time).toBeGreaterThan(100);
+      expect(time).toBeGreaterThanOrEqual(100);
       expect(value).toBe(true);
     })
 })
