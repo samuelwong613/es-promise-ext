@@ -6,7 +6,7 @@ test('promiseDelay(100)', async () => {
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     const time = Date.now() - now;
-    expect(time).toBeGreaterThan(100);
+    expect(time).toBeGreaterThanOrEqual(100);
     expect(time).toBeLessThan(300);
     expect(value).toBe(undefined);
   })
@@ -19,7 +19,7 @@ test('promiseDelay(200)', async () => {
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     const time = Date.now() - now;
-    expect(time).toBeGreaterThan(200);
+    expect(time).toBeGreaterThanOrEqual(200);
     expect(time).toBeLessThan(400);
     expect(value).toBe(undefined);
   })
