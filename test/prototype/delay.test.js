@@ -5,7 +5,7 @@ require('../../dist/prototype/delay/index');
 
 test('Promise.resolve("a").delay(100)', async () => {
   const now = Date.now();
-  Promise.resolve('a')
+  const promise = Promise.resolve('a')
     .delay(100)
     .then(value => {
       const time = Date.now() - now;
@@ -13,36 +13,51 @@ test('Promise.resolve("a").delay(100)', async () => {
       expect(time).toBeLessThan(150);
       expect(value).toBe('a');
     })
-  jest.runOnlyPendingTimers();  
+
+  for(let i = 0; i < 100; i++) {
+    jest.runOnlyPendingTimers();
+    await Promise.resolve();
+  }
+  return await promise;
 })
 
 
 test('Promise.resolve(object).delay(200)', async () => {
   const now = Date.now();
   const object = {};
-  Promise.resolve(object)
+  const promise = Promise.resolve(object)
     .delay(200)
     .then(value => {
       const time = Date.now() - now;
       expect(time).toBeGreaterThanOrEqual(200);
       expect(time).toBeLessThan(350);
       expect(value).toBe(object);
-    })
-  jest.runOnlyPendingTimers();    
+    })   
+
+  for(let i = 0; i < 100; i++) {
+    jest.runOnlyPendingTimers();
+    await Promise.resolve();
+  }
+  return await promise;
 })
 
 
 test('Promise.resolve(true).delay(100)', async () => {
   const now = Date.now();
-  Promise.resolve(true)
+  const promise = Promise.resolve(true)
     .delay(100)
     .then(value => {
       const time = Date.now() - now;
       expect(time).toBeGreaterThanOrEqual(100);
       expect(time).toBeLessThan(150);
       expect(value).toBe(true);
-    })
-  jest.runOnlyPendingTimers();    
+    }) 
+  
+  for(let i = 0; i < 100; i++) {
+    jest.runOnlyPendingTimers();
+    await Promise.resolve();
+  }
+  return await promise;
 })
 
 
