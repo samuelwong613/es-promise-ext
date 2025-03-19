@@ -12,9 +12,9 @@
  * The result within a promise after retries.
  * 
  * @example
- * Promise.retry(asyncFunction, 5, 1000);    
- * Promise.retry(() => asyncFunction(1, 2), 5, 1000);  
- * Promise.retry(promise, 5, 1000);  
+ * promiseRetry(asyncFunction, 5, 1000);    
+ * promiseRetry(() => asyncFunction(1, 2), 5, 1000);  
+ * promiseRetry(promise, 5, 1000);  
  * // Retry 5 times with a 1-second interval.
  */
  export default function retry<T>(
