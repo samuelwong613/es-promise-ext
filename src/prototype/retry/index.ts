@@ -6,14 +6,14 @@ declare global {
     /**
      * Starts a promise with an asynchronous function that has retry tolerance.
      * 
-     * @param {AsyncFunction<T> | Promise<T>} asyncFunction
+     * @param {AsyncFunction<U> | Promise<U>} asyncFunction
      * - An asynchronous function that will be called, returning a result in a promise.
      * @param {number} [count=3]
      * - A positive integer between 0 and 30 indicating the number of retries.
      * @param {number} [delay=100]
      * - The time in milliseconds to wait between retries.
      * 
-     * @return {RetryFunction<T>} 
+     * @return {Promise<U>} 
      * The function wrapper of return the result within a promise after retries.
      * 
      * @example
@@ -22,20 +22,20 @@ declare global {
      * Promise.resolve().retry(promise, 5, 1000);  
      * // Retry 5 times with a 1-second interval.
      */
-    retry(
-      asyncFunction: AsyncFunction<T> | PromiseLike<T>, 
+    retry<U>(
+      asyncFunction: AsyncFunction<U> | PromiseLike<U>, 
       count: number, 
       delay: number,
-    ): Promise<T>;
+    ): Promise<U>;
   }
 }
 
-function retry<T>(
+function retry<T, U>(
   this: Promise<T>,       
-  asyncFunction: AsyncFunction<T> | PromiseLike<T>, 
+  asyncFunction: AsyncFunction<U> | PromiseLike<U>, 
   count: number = 3, 
   delay: number = 100
-): Promise<T>{
+): Promise<U>{
   if (!(this instanceof Promise))
     throw TypeError('Promise.prototype.retry called on a non-Promise instance');
 
