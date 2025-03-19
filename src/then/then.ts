@@ -11,8 +11,8 @@ export type func<T> = () => T;
  * A value within a promise
  * 
  * @example
- * then(3)      // return 3 in a promise
- * then(()=>3)  // return 3 in a promise
+ * promiseThen(3)      // return 3 in a promise
+ * promiseThen(()=>3)  // return 3 in a promise
  */
 export default function then<T>(value: T | PromiseLike<T> | func<T>): Promise<T> {
 	if (typeof value === 'function')
