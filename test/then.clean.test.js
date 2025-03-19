@@ -1,7 +1,7 @@
-const {then} = require('../dist/clean');
+const {promiseThen} = require('../dist/clean');
 
 test('then(3)', async () => {
-  const promise = then(3);
+  const promise = promiseThen(3);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(3);
@@ -10,7 +10,7 @@ test('then(3)', async () => {
 
 
 test('then(true)', async () => {
-  const promise = then(true);
+  const promise = promiseThen(true);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(true);
@@ -19,7 +19,7 @@ test('then(true)', async () => {
 
 
 test('then("a")', async () => {
-  const promise = then("a");
+  const promise = promiseThen("a");
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe("a");
@@ -28,7 +28,7 @@ test('then("a")', async () => {
 
 
 test('then(() => 3)', async () => {
-  const promise = then(3);
+  const promise = promiseThen(3);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(3);
@@ -37,7 +37,7 @@ test('then(() => 3)', async () => {
 
 
 test('then(() => true)', async () => {
-  const promise = then(true);
+  const promise = promiseThen(true);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(true);
@@ -46,7 +46,7 @@ test('then(() => true)', async () => {
 
 
 test('then(() => "a")', async () => {
-  const promise = then("a");
+  const promise = promiseThen("a");
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe("a");
@@ -62,7 +62,7 @@ function func(value){
 }
 
 test('then(func)', async () => {
-  const promise = then(func);
+  const promise = promiseThen(func);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(10);
@@ -70,7 +70,7 @@ test('then(func)', async () => {
 })
 
 test('then(func(3))', async () => {
-  const promise = then(func(3));
+  const promise = promiseThen(func(3));
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(3);
@@ -87,7 +87,7 @@ async function asyncFunc(value){
 } 
 
 test('then(asyncFunc)', async () => {
-  const promise = then(asyncFunc);
+  const promise = promiseThen(asyncFunc);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(10);
@@ -95,7 +95,7 @@ test('then(asyncFunc)', async () => {
 })
 
 test('then(asyncFunc(3))', async () => {
-  const promise = then(asyncFunc(3));
+  const promise = promiseThen(asyncFunc(3));
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(3);
@@ -113,7 +113,7 @@ const asyncArrowFunc = async (value) =>
 
 
 test('then(asyncArrowFunc)', async () => {
-  const promise = then(asyncArrowFunc);
+  const promise = promiseThen(asyncArrowFunc);
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(10);
@@ -121,7 +121,7 @@ test('then(asyncArrowFunc)', async () => {
 })
 
 test('then(asyncArrowFunc(3))', async () => {
-  const promise = then(asyncArrowFunc(3));
+  const promise = promiseThen(asyncArrowFunc(3));
   expect(promise instanceof Promise).toBe(true);
   promise.then(value => {
     expect(value).toBe(3);
