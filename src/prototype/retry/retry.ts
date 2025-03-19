@@ -42,7 +42,7 @@ export type RetryFunction<T> = () => Promise<T>;
 			if(count === 0) throw err;
 
 			return new Promise(resolve => setTimeout(resolve, delay))
-        .then(()=>retry(asyncFunction, count-1, delay));
+        .then(retry(asyncFunction, count-1, delay));
 		})
 }
 
