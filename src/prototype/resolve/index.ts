@@ -7,7 +7,7 @@ declare global {
     /**
      * Resolve the value in the promise chain.
      * 
-     * @return {ResolveFunction<T>} 
+     * @return {Promise<void>} 
      * A value which pass through within a promise
      * 
      * @example
