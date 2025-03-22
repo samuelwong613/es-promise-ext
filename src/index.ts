@@ -6,3 +6,4 @@ import './prototype/delay';
 import './prototype/retry';
 import './prototype/resolve';
 import './prototype/reject';
+import './prototype/all';
