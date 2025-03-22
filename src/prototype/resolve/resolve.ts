@@ -26,7 +26,7 @@ export default function resolve<T>(): ResolveFunction<void>;
  * Promise.resolve()
  *   .then(resolve('a'))
  *   .then(doSomething)      
- * // return 'a' in the subsequence promise
+ * // return 'a' in the subsequent promise
  */
 export default function resolve<T>(value: T | PromiseLike<T>): ResolveFunction<T>;
 

@@ -30,7 +30,7 @@ declare global {
      * Promise.resolve()
      *   .resolve('a')
      *   .then(doSomething)      
-     * // return 'a' in the subsequence promise
+     * // return 'a' in the subsequent promise
      */
     resolve<U>(value?: U): Promise<U>;
   }
