@@ -1,8 +1,6 @@
 export type ResolvedPromise<T> = Promise<{ -readonly [P in keyof T]: Awaited<T[P]> }>
 type AllFunction<T> = () => ResolvedPromise<T>
 
-// const a: ResolvedPromise<[number, number]> = Promise.resolve([11,2]);
-
 /**
  * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
  * 

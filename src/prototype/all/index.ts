@@ -4,18 +4,24 @@ import _all, {ResolvedPromise} from './all';
 declare global {
   interface Promise<T> {
     /**
-     * Reject with error in the promise chain.
+     * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
      * 
-     * @param {any} reason
-     * - the reason of the error
+     * @param {T} values
+     * - An array of Promises.
      * 
-     * @return {Promise<never>} 
-     * The error which throw in the promise
+     * @return {AllFunction<T>} 
+     * A new Promise.
      * 
      * @example
      * Promise.resolve()
-     *   .then(reject('a'))
-     *   .catch(error => console.error(error))
+     *   .all(
+     *     [
+     *       Promise.resolve(1),
+     *       Promise.resolve(2),
+     *       Promise.resolve(3)
+     *     ]
+     *   )     
+     * // return [1,2,3] in the subsequent promise
      */
     all<U extends readonly unknown[] | []>(values: U): ResolvedPromise<U>;
   }
