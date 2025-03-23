@@ -6,10 +6,10 @@ declare global {
     /**
      * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
      * 
-     * @param {T} values
+     * @param {U} values
      * - An array of Promises.
      * 
-     * @return {ResolvedPromise<T>} 
+     * @return {ResolvedPromise<U>} 
      * A new Promise.
      * 
      * @example
