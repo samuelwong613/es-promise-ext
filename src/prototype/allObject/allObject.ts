@@ -24,7 +24,7 @@ type AllObjectFunction<T> = () => ResolvedPromise<T>
 export default function allObject<T extends Record<string, Promise<unknown>|unknown>>(values: T): AllObjectFunction<T> {
   type KeyOf = keyof typeof values;
 
-  const keys = Object.keys(values) as KeyOf[];
+  const keys = [...Object.keys(values), ...Object.getOwnPropertySymbols(values)] as KeyOf[];
   const promises = keys.map((key) => values[key]);  
 
   return () => Promise.all(promises).then(resolvedPromise => {
