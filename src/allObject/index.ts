@@ -1,4 +1,4 @@
-import { extendPrototype } from '../_helper';
+import { extendProperty } from '../_helper';
 import allObject, { ResolvedPromise } from './allObject';
 
 declare global {
@@ -26,4 +26,4 @@ declare global {
   }
 }
 
-extendPrototype(allObject,{functionName: 'allObject'});
+extendProperty(allObject,{functionName: 'allObject'});
