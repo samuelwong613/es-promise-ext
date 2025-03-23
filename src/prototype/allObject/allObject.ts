@@ -22,6 +22,9 @@ type AllObjectFunction<T> = () => ResolvedPromise<T>
  * // return the resolved object in the subsequent promise
  */
 export default function allObject<T extends Record<string, Promise<unknown>|unknown>>(values: T): AllObjectFunction<T> {
+  if (typeof values !== 'object' || (values instanceof Array))
+    throw TypeError('Promise.prototype.allObject parameter 1 must be an object');
+
   type KeyOf = keyof typeof values;
 
   const keys = [...Object.keys(values), ...Object.getOwnPropertySymbols(values)] as KeyOf[];
