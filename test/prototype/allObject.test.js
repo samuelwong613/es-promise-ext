@@ -1,4 +1,4 @@
-require('../../dist/prototype/allObject/index');
+require('../../dist/prototype/allObject');
 
 describe('allObject', () => {
   test('should resolve with an object of results when all promises resolve', async () => {
