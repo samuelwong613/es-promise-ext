@@ -19,7 +19,7 @@
  *     )
  *   )
  * )     
- * // return the resolved object in the subsequent promise
+ * // return the resolved map in the subsequent promise
  */
 export default function promiseAllMap(values: Map<any, Promise<unknown> | unknown>): Promise<Map<any, any>> {
   if (!(values instanceof Map))

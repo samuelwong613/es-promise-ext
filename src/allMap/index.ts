@@ -24,7 +24,7 @@ declare global {
      *     )
      *   )
      * )     
-     * // return the resolved object in the subsequent promise
+     * // return the resolved map in the subsequent promise
      */
      allMap(values: Map<any, Promise<unknown>|unknown>): Promise<Map<any, any>>;
   }
