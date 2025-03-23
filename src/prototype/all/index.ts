@@ -9,7 +9,7 @@ declare global {
      * @param {T} values
      * - An array of Promises.
      * 
-     * @return {AllFunction<T>} 
+     * @return {ResolvedPromise<T>} 
      * A new Promise.
      * 
      * @example
