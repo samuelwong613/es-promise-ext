@@ -1,6 +1,8 @@
 import './then';
 import './delay';
 import './retry';
+import './allObject';
+
 import './prototype/log';
 import './prototype/delay';
 import './prototype/retry';
