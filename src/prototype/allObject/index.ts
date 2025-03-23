@@ -6,21 +6,21 @@ declare global {
     /**
      * Creates a Promise that is resolved with a object of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
      * 
-     * @param {T} values
+     * @param {U} values
      * - A object of Promises.
      * 
-     * @return {AllObjectFunction<T>} 
+     * @return {ResolvedPromise<U>} 
      * A new Promise.
      * 
      * @example
      * Promise.resolve()
-     *   .then(allObject(
+     *   .allObject(
      *     {
      *       someNumber: Promise.resolve(1),
      *       someString: Promise.resolve('test'),
      *       someBoolean: Promise.resolve(true)
      *     }
-     *   ))     
+     *   )   
      * // return the resolved object in the subsequent promise
      */
      allObject<U extends Record<string, Promise<unknown>|unknown>>(values: U): ResolvedPromise<U>;
