@@ -25,17 +25,17 @@ export default function promiseAllMap(values: Map<any, Promise<unknown> | unknow
   if (!(values instanceof Map))
     throw TypeError('Promise.allMap parameter 1 must be a Map');
 
-  const keys = values.keys();
+  const keys = Array.from(values.keys());
   const promises: Array<Promise<unknown>|unknown> = [];
 
-  for (let key in keys){
+  for (let key of keys){
     promises.push(values.get(key));
   }
 
   return Promise.all(promises).then(resolvedPromise => {
     const result = new Map();
 
-    for (let key in keys){
+    for (let key of keys){
       result.set(key, resolvedPromise.shift())
     }
       
