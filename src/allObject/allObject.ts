@@ -20,6 +20,9 @@ export type ResolvedPromise<T> = Promise<{ [key in keyof T]: Awaited<T[key]>; }>
  * // return the resolved object in the subsequent promise
  */
 export default function promiseAllObject<T extends Record<string, Promise<unknown>|unknown>>(values: T): ResolvedPromise<T> {
+  if (typeof values !== 'object' || (values instanceof Array))
+    throw TypeError('Promise.allObject parameter 1 must be an object');
+
   type KeyOf = keyof typeof values;
 
   const keys = [...Object.keys(values), ...Object.getOwnPropertySymbols(values)] as KeyOf[];
