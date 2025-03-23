@@ -23,11 +23,11 @@ declare global {
      *   ))     
      * // return the resolved object in the subsequent promise
      */
-     allObject<U extends Record<string, Promise<unknown>>>(values: U): ResolvedPromise<U>;
+     allObject<U extends Record<string, Promise<unknown>|unknown>>(values: U): ResolvedPromise<U>;
   }
 }
 
-function allObject<T, U extends Record<string, Promise<unknown>>>(this: Promise<T>, values: U): ResolvedPromise<U>{
+function allObject<T, U extends Record<string, Promise<unknown>|unknown>>(this: Promise<T>, values: U): ResolvedPromise<U>{
   if (!(this instanceof Promise))
     throw TypeError('Promise.prototype.allObject called on a non-Promise instance');
   

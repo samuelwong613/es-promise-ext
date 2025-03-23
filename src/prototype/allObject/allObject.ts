@@ -21,7 +21,7 @@ type AllObjectFunction<T> = () => ResolvedPromise<T>
  *   ))     
  * // return the resolved object in the subsequent promise
  */
-export default function allObject<T extends Record<string, Promise<unknown>>>(values: T): AllObjectFunction<T> {
+export default function allObject<T extends Record<string, Promise<unknown>|unknown>>(values: T): AllObjectFunction<T> {
   type KeyOf = keyof typeof values;
 
   const keys = Object.keys(values) as KeyOf[];
