@@ -1,6 +1,6 @@
-const {allMap} = require('../../dist/clean');
+const {all} = require('../../dist/clean');
 
-describe('Promise.allMap', () => {
+describe('Promise.all with Map', () => {
 
   test('should resolve with a Map of results when all promises resolve', async () => {
     const inputMap = new Map([
@@ -9,7 +9,7 @@ describe('Promise.allMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get('someNumber')).toBe(1);
     expect(result.get('someString')).toBe('test');
     expect(result.get('someBoolean')).toBe(true);
@@ -22,7 +22,7 @@ describe('Promise.allMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get('someNumber')).toBe(1);
     expect(result.get('someString')).toBe('test');
     expect(result.get('someBoolean')).toBe(true);
@@ -35,7 +35,7 @@ describe('Promise.allMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    await expect(Promise.resolve().then(allMap(inputMap))).rejects.toBe('Error');
+    await expect(Promise.resolve().then(all(inputMap))).rejects.toBe('Error');
   });
 
   test('should work with single promise in the map', async () => {
@@ -43,7 +43,7 @@ describe('Promise.allMap', () => {
       ['onlyPromise', Promise.resolve(42)],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get('onlyPromise')).toBe(42);
   });
 
@@ -54,7 +54,7 @@ describe('Promise.allMap', () => {
       ['mixedKey3', Promise.resolve(false)],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get('mixedKey1')).toBe(10);
     expect(result.get('mixedKey2')).toBe('static value');
     expect(result.get('mixedKey3')).toBe(false);
@@ -66,7 +66,7 @@ describe('Promise.allMap', () => {
       [2, Promise.resolve('value')],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get(1)).toBe(123);
     expect(result.get(2)).toBe('value');
   });
@@ -77,7 +77,7 @@ describe('Promise.allMap', () => {
       [false, Promise.resolve('falseValue')],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get(true)).toBe(true);
     expect(result.get(false)).toBe('falseValue');
   });
@@ -91,7 +91,7 @@ describe('Promise.allMap', () => {
       [sym2, Promise.resolve('symbolValue2')],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get(sym1)).toBe('symbolValue1');
     expect(result.get(sym2)).toBe('symbolValue2');
   });
@@ -106,7 +106,7 @@ describe('Promise.allMap', () => {
       [sym1, Promise.resolve('symbolValue')],
     ]);
 
-    const result = await Promise.resolve().then(allMap(inputMap));
+    const result = await Promise.resolve().then(all(inputMap));
     expect(result.get('stringKey')).toBe('stringValue');
     expect(result.get(1)).toBe(100);
     expect(result.get(true)).toBe(false);
@@ -114,8 +114,9 @@ describe('Promise.allMap', () => {
   });
 
   test('should throw TypeError if input is not a Map', () => {
-    expect(() => Promise.resolve().then(allMap([]))).toThrow(TypeError);
-    expect(() => Promise.resolve().then(allMap({}))).toThrow(TypeError);
-    expect(() => Promise.resolve().then(allMap(null))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all(42))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all('some string'))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all(true))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all(null))).toThrow(TypeError);
   });
 });

@@ -11,5 +11,3 @@ import './prototype/resolve';
 import './prototype/reject';
 import './prototype/all';
 import './prototype/allSettled';
-import './prototype/allObject';
-import './prototype/allMap';

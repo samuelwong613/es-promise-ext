@@ -1,6 +1,6 @@
-require('../../dist/prototype/allObject');
+require('../../dist/prototype/all');
 
-describe('allObject', () => {
+describe('promise.all() with Object', () => {
   test('should resolve with an object of results when all promises resolve', async () => {
     const promises = {
       someNumber: Promise.resolve(1),
@@ -8,7 +8,7 @@ describe('allObject', () => {
       someBoolean: Promise.resolve(true),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       someNumber: 1,
       someString: 'test',
@@ -23,7 +23,7 @@ describe('allObject', () => {
       someBoolean: Promise.resolve(true),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       someNumber: 1,
       someString: 'test',
@@ -38,7 +38,7 @@ describe('allObject', () => {
       someBoolean: Promise.resolve(true),
     };
 
-    await expect(Promise.resolve().allObject(promises)).rejects.toBe('Test Error');
+    await expect(Promise.resolve().all(promises)).rejects.toBe('Test Error');
   });
 
   test('should resolve to an object with the same keys for a single promise', async () => {
@@ -46,7 +46,7 @@ describe('allObject', () => {
       someNumber: Promise.resolve(42),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       someNumber: 42,
     });
@@ -55,7 +55,7 @@ describe('allObject', () => {
   test('should return an empty object when given an empty object', async () => {
     const promises = {};
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({});
   });
 
@@ -66,7 +66,7 @@ describe('allObject', () => {
       2: Promise.resolve(200),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       1: 100,
       2: 200,
@@ -82,7 +82,7 @@ describe('allObject', () => {
       [sym2]: Promise.resolve('bar'),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       [sym1]: 'foo',
       [sym2]: 'bar',
@@ -98,7 +98,7 @@ describe('allObject', () => {
       [sym]: Promise.resolve('symbol'),
     };
 
-    const results = await Promise.resolve().allObject(promises);
+    const results = await Promise.resolve().all(promises);
     expect(results).toEqual({
       stringKey: 'string',
       123: 123,
