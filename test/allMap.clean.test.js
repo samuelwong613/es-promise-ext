@@ -1,6 +1,6 @@
-const {promiseAllMap} = require('../dist/clean');
+const {promiseAllWith} = require('../dist/clean');
 
-describe('promiseAllMap', () => {
+describe('promiseAllWith Map', () => {
   test('should resolve with a Map of results when all promises resolve', async () => {
     const inputMap = new Map([
       ['someNumber', Promise.resolve(1)],
@@ -8,7 +8,7 @@ describe('promiseAllMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('someNumber')).toBe(1);
     expect(result.get('someString')).toBe('test');
     expect(result.get('someBoolean')).toBe(true);
@@ -21,7 +21,7 @@ describe('promiseAllMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('someNumber')).toBe(1);
     expect(result.get('someString')).toBe('test');
     expect(result.get('someBoolean')).toBe(true);
@@ -34,7 +34,7 @@ describe('promiseAllMap', () => {
       ['someBoolean', Promise.resolve(true)],
     ]);
 
-    await expect(promiseAllMap(inputMap)).rejects.toBe('Error');
+    await expect(promiseAllWith(inputMap)).rejects.toBe('Error');
   });
 
   test('should work with single promise in the map', async () => {
@@ -42,7 +42,7 @@ describe('promiseAllMap', () => {
       ['onlyPromise', Promise.resolve(42)],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('onlyPromise')).toBe(42);
   });
 
@@ -53,7 +53,7 @@ describe('promiseAllMap', () => {
       ['mixedKey3', Promise.resolve(false)],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('mixedKey1')).toBe(10);
     expect(result.get('mixedKey2')).toBe('static value');
     expect(result.get('mixedKey3')).toBe(false);
@@ -66,7 +66,7 @@ describe('promiseAllMap', () => {
       [true, Promise.resolve(false)],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('stringKey')).toBe('stringValue');
     expect(result.get(1)).toBe(100);
     expect(result.get(true)).toBe(false);
@@ -83,7 +83,7 @@ describe('promiseAllMap', () => {
       [false, Promise.resolve('falseValue')],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get('stringKey')).toBe('stringValue');
     expect(result.get(sym1)).toBe('symbolValue');
     expect(result.get(sym2)).toBe('symbolValue 2');
@@ -101,7 +101,7 @@ describe('promiseAllMap', () => {
       [sym2, Promise.resolve('symbolValue')],
     ]);
 
-    const result = await promiseAllMap(inputMap);
+    const result = await promiseAllWith(inputMap);
     expect(result.get(1)).toBe(1);
     expect(result.get(true)).toBe('trueValue');
     expect(result.get(sym1)).toBe('symbolValue');
@@ -109,8 +109,9 @@ describe('promiseAllMap', () => {
   });
 
   test('should throw TypeError if input is not a Map', () => {
-    expect(() => promiseAllMap([])).toThrow(TypeError);
-    expect(() => promiseAllMap({})).toThrow(TypeError);
-    expect(() => promiseAllMap(null)).toThrow(TypeError);
+    expect(() => promiseAllWith(1)).toThrow(TypeError);
+    expect(() => promiseAllWith('some string')).toThrow(TypeError);
+    expect(() => promiseAllWith(true)).toThrow(TypeError);
+    expect(() => promiseAllWith(null)).toThrow(TypeError);
   });
 });

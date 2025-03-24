@@ -1,8 +1,7 @@
 import './then';
 import './delay';
 import './retry';
-import './allObject';
-import './allMap';
+import './allWith';
 
 import './prototype/log';
 import './prototype/delay';
