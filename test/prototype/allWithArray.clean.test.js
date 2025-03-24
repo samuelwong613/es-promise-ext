@@ -46,4 +46,43 @@ describe('all', () => {
     const results = await Promise.resolve().then(all(promises));
     expect(results).toEqual([42]);
   });
+
+  test('should handle an iterable', async () => {
+    const promises = new Set([
+      Promise.resolve(1),
+      Promise.resolve('test'),
+      Promise.resolve(true),
+    ]);
+
+    const results = await Promise.resolve().then(all(promises));
+    expect(results).toEqual([1, 'test', true]);
+  });
+
+  test('should reject if any promise in an iterable is rejected', async () => {
+    const promises = new Set([
+      Promise.resolve(1),
+      Promise.reject('Error'),
+      Promise.resolve(true),
+    ]);
+
+    await expect(Promise.resolve().then(all(promises))).rejects.toBe('Error');
+  });
+  
+  test('should handle promises that resolve to other promises', async () => {
+    const promises = [
+      Promise.resolve(Promise.resolve(1)),
+      Promise.resolve(2),
+      Promise.resolve(Promise.resolve(3)),
+    ];
+
+    const results = await Promise.resolve().then(all(promises));
+    expect(results).toEqual([1, 2, 3]);
+  });
+
+  test('should throw TypeError if input is not an array or iterable', () => {
+    expect(() => Promise.resolve().then(all(null))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all(true))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all('some string'))).toThrow(TypeError);
+    expect(() => Promise.resolve().then(all(123))).toThrow(TypeError);
+  });
 });

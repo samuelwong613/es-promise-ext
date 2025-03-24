@@ -1,6 +1,30 @@
 import allWithMap, { AllWithMapFunction } from "./allWithMap";
 import allWithObject, { AllWithObjectFunction } from "./allWithObject";
-export type AllFunction<U> = () => Promise<{ -readonly [key in keyof U]: Awaited<U[key]> }>
+export type AllWithIterableFunction<W> = () => Promise<Awaited<W>[]>
+export type AllWithArrayFunction<U> = () => Promise<{ -readonly [key in keyof U]: Awaited<U[key]> }>
+
+/**
+ * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
+ * 
+ * @param {Iterable<W | PromiseLike<W>>} values
+ * - An iterable of Promises.
+ * 
+ * @return {AllWithIterableFunction<W>} 
+ * A new Promise.
+ * 
+ * @example
+ * Promise.resolve()
+ *   .then(all(
+ *     new Set([
+ *       Promise.resolve(1),
+ *       Promise.resolve(2),
+ *       Promise.resolve(3)
+ *     ])
+ *   ))
+ * )     
+ * // return [1,2,3] in the subsequent promise
+ */
+export default function all<W>(values: Iterable<W | PromiseLike<W>>): AllWithIterableFunction<W>;
 
 /**
  * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
@@ -8,7 +32,7 @@ export type AllFunction<U> = () => Promise<{ -readonly [key in keyof U]: Awaited
  * @param {U} values
  * - An array of Promises.
  * 
- * @return {AllFunction<U>} 
+ * @return {AllWithArrayFunction<U>} 
  * A new Promise.
  * 
  * @example
@@ -22,7 +46,7 @@ export type AllFunction<U> = () => Promise<{ -readonly [key in keyof U]: Awaited
  *   ))     
  * // return [1,2,3] in the subsequent promise
  */
-export default function all<U extends readonly unknown[] | []>(values: U): AllFunction<U>;
+export default function all<U extends readonly unknown[] | []>(values: U): AllWithArrayFunction<U>;
 
 /**
  * Creates a Promise that is resolved with a map of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
@@ -71,16 +95,26 @@ export default function all(values: Map<any, Promise<unknown> | unknown>): AllWi
 export default function all<V extends Record<string, Promise<unknown>|unknown>>(values: V): AllWithObjectFunction<V>;
 
 export default function all<
+  W,
   U extends (readonly unknown[] | []),
   V extends (Record<string, Promise<unknown>|unknown>),
 >
-  ( values: U | V | Map<any, Promise<unknown> | unknown> ) : 
-  AllFunction<U> | AllWithMapFunction | AllWithObjectFunction<V>
+  ( values: Iterable<W | PromiseLike<W>> | U | V | Map<any, Promise<unknown> | unknown> ) : 
+  AllWithIterableFunction<W> | AllWithArrayFunction<U> | AllWithMapFunction | AllWithObjectFunction<V>
 {
-  if (values instanceof Array)
-    return () => Promise.all(values);
-  else if (values instanceof Map)
-    return allWithMap(values);
+  if (values instanceof Map)
+    return allWithMap(values as Map<any, Promise<unknown> | unknown>);
+  else if (values instanceof Array)
+    return () => Promise.all(values as U);
+  else if (isIterable(values))
+    return () => Promise.all(values as Iterable<W | PromiseLike<W>>);
   else
-    return allWithObject(values);
+    return allWithObject(values as V);
+}
+
+export function isIterable(object: any) {
+  if (typeof object !== 'object' || object === null || object === undefined) {
+    return false;
+  }
+  return typeof object[Symbol.iterator] === 'function';
 }
