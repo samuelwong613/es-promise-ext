@@ -4,7 +4,7 @@ import promiseAllWithObject from "./allWithObject";
 /**
  * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
  * 
- * @param {W} values
+ * @param {Iterable<W | PromiseLike<W>>} values
  * - An iterable of Promises.
  * 
  * @return {Promise<{ [key in keyof W]: Awaited<W[key]>; }>} 
