@@ -1,7 +1,5 @@
 import { extendPrototype } from '../../_helper';
-import _all, {AllFunction} from './all';
-import {AllWithMapFunction} from './allWithMap';
-import {AllWithObjectFunction} from './allWithObject';
+import _all from './all';
 
 declare global {
   interface Promise<T> {
@@ -62,13 +60,13 @@ declare global {
      * 
      * @example
      * Promise.resolve()
-     *   .then(all(
+     *   .all(
      *     {
      *       someNumber: Promise.resolve(1),
      *       someString: Promise.resolve('test'),
      *       someBoolean: Promise.resolve(true)
      *     }
-     *   ))     
+     *   )     
      * // return the resolved object in the subsequent promise
      */
      all<V extends Record<string, Promise<unknown>|unknown>>(values: V): Promise<{ [key in keyof V]: Awaited<V[key]>; }>;
