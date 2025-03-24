@@ -4,19 +4,19 @@ import promiseAllWithObject from "./allWithObject";
 /**
  * Creates a Promise that is resolved with an array of results when all of the provided Promises resolve, or rejected when any Promise is rejected.
  * 
- * @param {U} values
+ * @param {W} values
  * - An iterable of Promises.
  * 
- * @return {Promise<{ [key in keyof U]: Awaited<U[key]>; }>} 
+ * @return {Promise<{ [key in keyof W]: Awaited<W[key]>; }>} 
  * A new Promise.
  * 
  * @example
- * promiseAll(
- *   [
+ * promiseAllWith(
+ *   new Set([
  *     Promise.resolve(1),
  *     Promise.resolve(2),
  *     Promise.resolve(3)
- *   ]
+ *   ])
  * )     
  * // return [1,2,3] in the subsequent promise
  */
@@ -32,7 +32,7 @@ export default function promiseAllWith<W>(values: Iterable<W | PromiseLike<W>>):
  * A new Promise.
  * 
  * @example
- * promiseAll(
+ * promiseAllWith(
  *   [
  *     Promise.resolve(1),
  *     Promise.resolve(2),
@@ -53,7 +53,7 @@ export default function promiseAllWith<U extends readonly unknown[] | []>(values
  * A new Promise.
  * 
  * @example
- * promiseAll(
+ * promiseAllWith(
  *   {
  *     someNumber: Promise.resolve(1),
  *     someString: Promise.resolve('test'),
@@ -74,7 +74,7 @@ export default function promiseAllWith<V extends Record<string, Promise<unknown>
  * A new Promise.
  * 
  * @example
- * promiseAll( 
+ * promiseAllWith( 
  *   new Map(
  *     Object.entries({
  *       someNumber: Promise.resolve(1),
