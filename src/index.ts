@@ -2,6 +2,7 @@ import './then';
 import './delay';
 import './retry';
 import './allWith';
+import './timeOut';
 
 import './prototype/log';
 import './prototype/delay';

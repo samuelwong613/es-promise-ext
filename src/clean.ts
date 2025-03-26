@@ -2,6 +2,7 @@ export {default as promiseThen} from "./then/then"
 export {default as promiseDelay} from "./delay/delay"
 export {default as promiseRetry} from "./retry/retry"
 export {default as promiseAllWith} from "./allWith/allWith"
+export {default as promiseTimeOut} from "./timeOut/timeOut"
 
 export {default as log} from "./prototype/log/log"
 export {default as delay} from "./prototype/delay/delay"
