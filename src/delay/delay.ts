@@ -1,6 +1,9 @@
 /**
  * Start promise after delaying.
  * 
+ * @param {number} millisecond
+ * - a time for the delay
+ * 
  * @return {Promise<void>} 
  * A void promise
  * 
