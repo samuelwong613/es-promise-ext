@@ -16,7 +16,7 @@ declare global {
      * The returned promise
      * 
      * @example
-     * promiseTimeOut(asyncFunction, 300)
+     * Promise.timeOut(asyncFunction, 300)
      *   .then(doSomething)  
      * // return a promise after with in 300 ms, otherwise reject with time out error
      */
@@ -35,7 +35,7 @@ declare global {
      * The returned promise
      * 
      * @example
-     * promiseTimeOut(promise, 300)
+     * Promise.timeOut(promise, 300)
      *   .then(doSomething)  
      * // return a promise after with in 300 ms, otherwise reject with time out error
      */
@@ -44,7 +44,3 @@ declare global {
 }
 
 extendProperty(timeOut, {functionName: 'timeOut'});
-
-const asynFunction = async () => {
-  return Promise.resolve(3);
-}
