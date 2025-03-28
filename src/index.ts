@@ -3,6 +3,7 @@ import './delay';
 import './retry';
 import './allWith';
 import './timeOut';
+import './wrap';
 
 import './prototype/log';
 import './prototype/delay';
