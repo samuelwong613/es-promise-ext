@@ -38,5 +38,5 @@ export default function wrap<U extends any[]>(
   })
 }
 
-export type CallbackFunction<U extends any[]> = (...args: U) => any
+type CallbackFunction<U extends any[]> = (...args: U) => any
 export type WrappedAsyncFunction<U extends any[]> = (callback: CallbackFunction<U>) => any
