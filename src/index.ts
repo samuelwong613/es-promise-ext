@@ -4,6 +4,7 @@ import './retry';
 import './allWith';
 import './timeOut';
 import './wrap';
+import './sequence';
 
 import './prototype/log';
 import './prototype/delay';

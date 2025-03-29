@@ -4,6 +4,7 @@ export {default as promiseRetry} from "./retry/retry"
 export {default as promiseAllWith} from "./allWith/allWith"
 export {default as promiseTimeOut} from "./timeOut/timeOut"
 export {default as promiseWrap} from "./wrap/wrap"
+export {default as promiseSequence} from "./sequence/sequence"
 
 export {default as log} from "./prototype/log/log"
 export {default as delay} from "./prototype/delay/delay"
