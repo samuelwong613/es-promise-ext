@@ -15,3 +15,4 @@ import './prototype/all';
 import './prototype/allSettled';
 import './prototype/timeOut';
 import './prototype/wrap';
+import './prototype/sequence';
