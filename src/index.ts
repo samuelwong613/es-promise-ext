@@ -5,6 +5,7 @@ import './allWith';
 import './timeOut';
 import './wrap';
 import './sequence';
+import './reduce';
 
 import './prototype/log';
 import './prototype/delay';
