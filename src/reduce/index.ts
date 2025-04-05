@@ -17,7 +17,7 @@ declare global {
      *   [
      *     () => Promise.resolve(1),
      *     plus(5),
-     *     minus(2).
+     *     minus(2),
      *   ]
      * )     
      * // return 4 in the subsequent promise
@@ -42,7 +42,7 @@ declare global {
      * Promise.reduce(
      *   [
      *     plus(5),
-     *     minus(2).
+     *     minus(2),
      *   ],
      *   {
      *     canceller: { cancelled: false }, 

@@ -32,7 +32,7 @@ export type AsyncFunctions<I,R,V0,V1,V2,V3,V4,V5,V6,V7,V8,V9> = [] | [(arg: Awai
  *   [
  *     () => Promise.resolve(1),
  *     plus(5),
- *     minus(2).
+ *     minus(2),
  *   ]
  * )     
  * // return 4 in the subsequent promise
@@ -57,7 +57,7 @@ export default async function reduce<I,R,V0,V1,V2,V3,V4,V5,V6,V7,V8,V9>(asyncFun
  * promiseReduce(
  *   [
  *     plus(5),
- *     minus(2).
+ *     minus(2),
  *   ],
  *   {
  *     canceller: { cancelled: false }, 
