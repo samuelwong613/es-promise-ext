@@ -17,7 +17,7 @@ export type AsyncFunction<T> = () => Promise<T>
  * @example
  * promiseTimeOut(asyncFunction, 300)
  *   .then(doSomething)  
- * // return a promise after with in 300 ms, otherwise reject with time out error
+ * // return a promise within 300 ms, otherwise reject with time out error
  */
 export default function promiseTimeOut<T>(asyncFunction: AsyncFunction<T>, millisecond?: number): Promise<T> | Promise<never>;
 
@@ -36,7 +36,7 @@ export default function promiseTimeOut<T>(asyncFunction: AsyncFunction<T>, milli
  * @example
  * promiseTimeOut(promise, 300)
  *   .then(doSomething)  
- * // return a promise after with in 300 ms, otherwise reject with time out error
+ * // return a promise within 300 ms, otherwise reject with time out error
  */
 export default function promiseTimeOut<T>(promise: Promise<T>, millisecond?: number): Promise<T> | Promise<never>;
 

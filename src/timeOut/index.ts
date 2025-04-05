@@ -18,7 +18,7 @@ declare global {
      * @example
      * Promise.timeOut(asyncFunction, 300)
      *   .then(doSomething)  
-     * // return a promise after with in 300 ms, otherwise reject with time out error
+     * // return a promise within 300 ms, otherwise reject with time out error
      */
     timeOut<T>(asyncFunction: AsyncFunction<T>, millisecond?: number): Promise<T> | Promise<never>;
 
@@ -37,7 +37,7 @@ declare global {
      * @example
      * Promise.timeOut(promise, 300)
      *   .then(doSomething)  
-     * // return a promise after with in 300 ms, otherwise reject with time out error
+     * // return a promise within 300 ms, otherwise reject with time out error
      */
     timeOut<T>(promise: Promise<T>, millisecond?: number): Promise<T> | Promise<never>;
   }
