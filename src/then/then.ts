@@ -1,7 +1,7 @@
 export type func<T> = () => T;
 
 /**
- * Start promise with a function, which Promise.resolve() not supported.
+ * Start promise with a function, which Promise.resolve() does not support.
  * 
  * @param {T} value
  * - a value - which would be equivient to Promise.resolve(value)
