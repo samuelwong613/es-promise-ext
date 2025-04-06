@@ -1,9 +1,9 @@
 {
   "name": "es-promise-ext",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Native promise extensions for javascript and typescript.",
   "main": "dist/index.js",
-  "exports":{
+  "exports": {
     ".": "./dist/index.js",
     "./clean": "./dist/clean.js",
     "./then": "./dist/then/index.js",
