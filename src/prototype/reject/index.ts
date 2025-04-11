@@ -14,7 +14,7 @@ declare global {
      * 
      * @example
      * Promise.resolve()
-     *   .then(reject('a'))
+     *   .reject('a')
      *   .catch(error => console.error(error))
      */
     reject(value: any): Promise<never>;
