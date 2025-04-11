@@ -10,7 +10,7 @@ declare global {
      * - a time for the delay
      * 
      * @return {Promise<T>} 
-     * A void promise
+     * A value which pass through within a promise
      * 
      * @example
      * Promise.resolve('a')
